@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   return next()
 })
 
-app.get('/viewer', (_, res) => {
+app.get('/viewer.html', (_, res) => {
   res.sendFile(path.resolve(__dirname + '/../dist/viewer.html'))
 })
 app.use(express.static(path.resolve('.')))
@@ -40,13 +40,19 @@ const primus = new Primus(webserver, {})
 const fileState = new Project(directory, publishFileChange, publishFileDeletion)
 
 primus.on('connection', _spark => {
-  primus.write({ eventType: 'FULL_TREE', data: fileState.fullTree() })
+  const files = fileState.fullTree()
+  primus.write({
+    eventType: 'FULL_TREE',
+    data: Object.keys(files).map(filepath => {
+      return { filepath, contents: files[filepath] }
+    }),
+  })
 })
 
 function publishFileChange({ filepath, contents }) {
-  primus.write({ filepath, contents, eventType: 'FILE_UPDATED' })
+  primus.write({ data: { filepath, contents }, eventType: 'FILE_UPDATED' })
 }
 
 function publishFileDeletion({ filepath }) {
-  primus.write({ filepath, eventType: 'FILE_DELETED' })
+  primus.write({ data: { filepath }, eventType: 'FILE_DELETED' })
 }
