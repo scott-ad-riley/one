@@ -23,6 +23,9 @@ app.use((req, res, next) => {
 app.get('/viewer.html', (_, res) => {
   res.sendFile(path.resolve(__dirname + '/../dist/viewer.html'))
 })
+app.get('/config.html', (_, res) => {
+  res.sendFile(path.resolve(__dirname + '/../dist/viewer.html'))
+})
 app.use(express.static(path.resolve('.')))
 
 let options = {

@@ -6,5 +6,9 @@
 4. Make sure you have a twitch extension that's looking for files to load from `localhost:8080`
 5. `npm start` will host at `https://localhost:8080`. This will be watching `test_folder_to_watch` for any changes
 6. `npm run watch` will run the frontend bundler and watch your frontend/client files
+7. Add/Edit/Delete files in `test_folder_to_watch`
 
-* Extra note: I've fixed the version of `ws@3.3.2` in my package.json because the bundler i'm using breaks on `3.3.3` ([See here](https://github.com/parcel-bundler/parcel/issues/315), will probably be fixed in a day or two)
+## Notes and stuff
+
+* I've fixed the version of `ws@3.3.2` in my package.json because the bundler i'm using breaks on `3.3.3` ([See here](https://github.com/parcel-bundler/parcel/issues/315), will probably be fixed in a day or two)
+* There's no config page yet so the express route just hands back the viewer page
