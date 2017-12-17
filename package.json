@@ -1,0 +1,26 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "parcel watch ./client/viewer.html",
+    "setup": "sudo bash ./server/generate_certs.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "parcel-bundler": "^1.2.0"
+  },
+  "dependencies": {
+    "babel-preset-preact": "^1.1.0",
+    "express": "^4.16.2",
+    "node-watch": "^0.5.5",
+    "preact": "^8.2.7",
+    "preact-compat": "^3.17.0",
+    "primus": "^7.1.0",
+    "ws": "^3.3.2"
+  }
+}

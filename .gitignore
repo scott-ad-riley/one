@@ -1,0 +1,5 @@
+node_modules/
+.cache/
+dist/
+server/testing.crt
+server/testing.key
